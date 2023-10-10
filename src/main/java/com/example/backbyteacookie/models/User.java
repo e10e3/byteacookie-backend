@@ -15,10 +15,10 @@ public record User(
         String name,
         String email,
         String password,
-        @OneToMany(mappedBy = "user")
+        @OneToMany(mappedBy = "author")
         @JsonIgnore
         List<Recipe> recipes,
-        @OneToMany(mappedBy = "user")
+        @OneToMany(mappedBy = "author")
         @JsonIgnore
         List<Comment> comments) {
 }

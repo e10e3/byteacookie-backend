@@ -2,7 +2,6 @@ package com.example.backbyteacookie.models;
 
 import jakarta.persistence.*;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
 
 import java.time.ZonedDateTime;
 
@@ -17,8 +16,10 @@ public record Comment(
 
         @ManyToOne(cascade = CascadeType.ALL)
         @JoinColumn(name = "author_id")
-        User user,
-        Long recipe_id,
+        User author,
+        @ManyToOne(cascade = CascadeType.ALL)
+        @JoinColumn(name = "recipe_id")
+        Recipe recipe,
         int rating,
         String body,
         ZonedDateTime date) {

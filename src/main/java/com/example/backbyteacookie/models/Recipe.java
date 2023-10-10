@@ -1,9 +1,7 @@
 package com.example.backbyteacookie.models;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.NoArgsConstructor;
 
 
 import java.time.ZonedDateTime;
@@ -24,7 +22,7 @@ public record Recipe(
         Duration time,
         @ManyToOne(cascade = CascadeType.ALL)
         @JoinColumn(name = "author_id")
-        User user,
+        User author,
         ZonedDateTime date,
 
         @ManyToMany
@@ -34,7 +32,7 @@ public record Recipe(
                 inverseJoinColumns = @JoinColumn(name = "recipe_id"))
         List<Ingredient> ingredients,
 
-        @OneToMany(mappedBy = "recipe_id")
+        @OneToMany(mappedBy = "recipe")
         List<Comment> comments
 ) {
 
