@@ -14,13 +14,9 @@ public record Comment(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         Long id,
-
-        int author_id,
-        int recipe_id,
+        Long author_id,
+        Long recipe_id,
         int rating,
         String body,
-        ZonedDateTime date)
-
-    {
-
+        ZonedDateTime date) {
 }

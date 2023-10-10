@@ -9,7 +9,7 @@ import java.time.*;
 import java.util.List;
 
 @Entity
-@Table(name = "recipe")
+@Table(name = "recipes")
 @Builder
 public record Recipe(
         @Id
@@ -25,10 +25,13 @@ public record Recipe(
 
         @ManyToMany
         @JoinTable(
-        name = "ingredient_recipe",
-        joinColumns = @JoinColumn(name = "ingredient_id"),
-        inverseJoinColumns = @JoinColumn(name = "recipe_id"))
-        List<Ingredient> ingredients
-        ) {
+                name = "ingredient_recipe",
+                joinColumns = @JoinColumn(name = "ingredient_id"),
+                inverseJoinColumns = @JoinColumn(name = "recipe_id"))
+        List<Ingredient> ingredients,
+
+        @OneToMany(mappedBy = "recipe_id")
+        List<Comment> comments
+) {
 
 }
