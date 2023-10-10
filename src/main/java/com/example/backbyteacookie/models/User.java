@@ -1,13 +1,13 @@
 package com.example.backbyteacookie.models;
 
 import jakarta.persistence.*;
-import lombok.NoArgsConstructor;
+import lombok.Builder;
 
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-@NoArgsConstructor(force = true)
+@Builder
 public record User(
         @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
         Long id,
