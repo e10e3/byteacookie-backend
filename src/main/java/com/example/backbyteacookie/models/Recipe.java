@@ -1,7 +1,9 @@
 package com.example.backbyteacookie.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
 
 
 import java.time.ZonedDateTime;
@@ -20,7 +22,9 @@ public record Recipe(
         String description,
         Difficulty difficulty,
         Duration time,
-        Long author_id,
+        @ManyToOne(cascade = CascadeType.ALL)
+        @JoinColumn(name = "author_id")
+        User user,
         ZonedDateTime date,
 
         @ManyToMany

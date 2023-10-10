@@ -1,5 +1,6 @@
 package com.example.backbyteacookie.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Builder;
 
@@ -14,8 +15,10 @@ public record User(
         String name,
         String email,
         String password,
-        @OneToMany(mappedBy = "author_id")
+        @OneToMany(mappedBy = "user")
+        @JsonIgnore
         List<Recipe> recipes,
-        @OneToMany(mappedBy = "author_id")
+        @OneToMany(mappedBy = "user")
+        @JsonIgnore
         List<Comment> comments) {
 }

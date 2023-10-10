@@ -14,7 +14,10 @@ public record Comment(
         @Id
         @GeneratedValue(strategy = GenerationType.IDENTITY)
         Long id,
-        Long author_id,
+
+        @ManyToOne(cascade = CascadeType.ALL)
+        @JoinColumn(name = "author_id")
+        User user,
         Long recipe_id,
         int rating,
         String body,
