@@ -1,15 +1,23 @@
 package com.example.backbyteacookie.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.Data;
 
 @Entity
 @Table(name = "ingredients")
 @Builder
-public record Ingredient(
-        @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-        Long id,
-        String name,
-        String image,
-        IngredientType type) {
+@Data
+@AllArgsConstructor
+public class Ingredient {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String name;
+    private String image;
+    private IngredientType type;
+
+    public Ingredient() {
+    }
 }
