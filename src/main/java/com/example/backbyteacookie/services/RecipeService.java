@@ -11,7 +11,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RecipeService {
     private final RecipeDao recipeDao;
+
     public List<Recipe> findAll() {
         return recipeDao.findAll();
+    }
+
+    public Recipe findById(Long id) {
+        return recipeDao.findById(id).orElseThrow();
     }
 }

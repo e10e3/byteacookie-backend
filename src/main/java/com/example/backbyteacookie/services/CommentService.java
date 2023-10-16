@@ -11,7 +11,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class CommentService {
     private final CommentDao commentDao;
+
     public List<Comment> findAll() {
         return commentDao.findAll();
+    }
+
+    public Comment findById(Long id) {
+        return commentDao.findById(id).orElseThrow();
     }
 }

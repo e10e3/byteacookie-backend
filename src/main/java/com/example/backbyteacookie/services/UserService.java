@@ -11,7 +11,12 @@ import java.util.List;
 @RequiredArgsConstructor
 public class UserService {
     private final UserDao userDao;
+
     public List<User> findAll() {
         return userDao.findAll();
+    }
+
+    public User findById(Long id) {
+        return userDao.findById(id).orElseThrow();
     }
 }
