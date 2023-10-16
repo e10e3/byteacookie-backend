@@ -5,7 +5,7 @@ CREATE TABLE users (
     password text NOT NULL
 );
 
-CREATE TYPE difficulty AS ENUM ( 'easy', 'medium', 'hard' );
+CREATE TYPE difficulty AS ENUM ( 'EASY', 'MEDIUM', 'HARD' );
 
 CREATE TABLE recipes (
     id bigserial PRIMARY KEY,
@@ -18,7 +18,7 @@ CREATE TABLE recipes (
     date timestamp with time zone NOT NULL
 );
 
-CREATE TYPE ingredient_type AS ENUM ( 'discreet', 'mass', 'volume' );
+CREATE TYPE ingredient_type AS ENUM ( 'DISCREET', 'MASS', 'VOLUME' );
 
 CREATE TABLE ingredients (
     id bigserial PRIMARY KEY,
@@ -30,7 +30,7 @@ CREATE TABLE ingredients (
 CREATE TABLE ingredient_recipe (
     id bigserial PRIMARY KEY,
     recipe_id integer REFERENCES recipes ON DELETE CASCADE,
-    ingredient_id integer REFERENCES ingredients ON DELETE RESTRICT ,
+    ingredient_id integer REFERENCES ingredients ON DELETE RESTRICT,
     quantity real NOT NULL
 );
 

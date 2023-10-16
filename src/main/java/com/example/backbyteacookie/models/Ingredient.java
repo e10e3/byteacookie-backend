@@ -16,6 +16,7 @@ public class Ingredient {
     private Long id;
     private String name;
     private String image;
+    @Enumerated(EnumType.STRING)
     private IngredientType type;
 
     public Ingredient() {

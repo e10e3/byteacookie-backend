@@ -21,6 +21,7 @@ public class Recipe {
     private String name;
     private byte[] image;
     private String description;
+    @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
     private Duration time;
     @ManyToOne(cascade = CascadeType.ALL)
