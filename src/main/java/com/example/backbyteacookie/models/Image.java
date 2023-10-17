@@ -6,20 +6,16 @@ import lombok.Builder;
 import lombok.Data;
 
 @Entity
-@Table(name = "ingredients")
+@Table(name = "images")
 @Builder
 @Data
 @AllArgsConstructor
-public class Ingredient {
+public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    @OneToOne(orphanRemoval = true)
-    private Image image;
-    @Enumerated(EnumType.STRING)
-    private IngredientType type;
+    private String content;
 
-    public Ingredient() {
+    public Image() {
     }
 }

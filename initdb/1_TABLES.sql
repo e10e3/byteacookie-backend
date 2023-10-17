@@ -5,12 +5,18 @@ CREATE TABLE users (
     password text NOT NULL
 );
 
+CREATE TABLE images
+(
+    id      bigserial PRIMARY KEY,
+    content bytea NOT NULL
+);
+
 CREATE TYPE difficulty AS ENUM ( 'EASY', 'MEDIUM', 'HARD' );
 
 CREATE TABLE recipes (
     id bigserial PRIMARY KEY,
     name text NOT NULL,
-    image bytea,
+    image_id integer REFERENCES images NULL,
     description text NOT NULL,
     difficulty difficulty NOT NULL,
     time interval HOUR TO MINUTE NOT NULL,
@@ -23,7 +29,7 @@ CREATE TYPE ingredient_type AS ENUM ( 'DISCREET', 'MASS', 'VOLUME' );
 CREATE TABLE ingredients (
     id bigserial PRIMARY KEY,
     name text NOT NULL,
-    image bytea,
+    image_id integer REFERENCES images NULL,
     type ingredient_type NOT NULL
 );
 

@@ -23,7 +23,8 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
-    private byte[] image;
+    @OneToOne(orphanRemoval = true)
+    private Image image;
     private String description;
     @Enumerated(EnumType.STRING)
     private Difficulty difficulty;
