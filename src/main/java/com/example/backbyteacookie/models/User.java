@@ -18,8 +18,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
+    @OneToOne(orphanRemoval = true)
+    private Image profilePicture;
     private String email;
-    private String password;
+    @JsonIgnore
+    private byte[] password;
     @OneToMany(mappedBy = "author")
     @JsonIgnore
     private List<Recipe> recipes;

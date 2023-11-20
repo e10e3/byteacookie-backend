@@ -34,12 +34,8 @@ public class Recipe {
     @JoinColumn(name = "author_id")
     private User author;
     private ZonedDateTime date;
-    @ManyToMany
-    @JoinTable(
-            name = "ingredient_recipe",
-            joinColumns = @JoinColumn(name = "ingredient_id"),
-            inverseJoinColumns = @JoinColumn(name = "recipe_id"))
-    private List<Ingredient> ingredients;
+    @OneToMany(mappedBy = "recipe")
+    private List<RecipeIngredientQuantity> ingredientQuantities;
     @OneToMany(mappedBy = "recipe")
     @JsonIgnore
     private List<Comment> comments;

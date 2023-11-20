@@ -1,9 +1,12 @@
 package com.example.backbyteacookie.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+
+import java.util.List;
 
 @Entity
 @Table(name = "ingredients")
@@ -19,6 +22,9 @@ public class Ingredient {
     private Image image;
     @Enumerated(EnumType.STRING)
     private IngredientType type;
+    @OneToMany(mappedBy = "ingredient")
+    @JsonIgnore
+    private List<RecipeIngredientQuantity> recipesFeaturedIn;
 
     public Ingredient() {
     }
